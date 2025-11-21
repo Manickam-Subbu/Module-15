@@ -1,9 +1,11 @@
-Ex. No: 15A - Build a Binary Tree with Float Values
+# Ex. No: 15A - Build a Binary Tree with Float Values
 
-AIM:
+## AIM:
 To write a Python program to build a binary tree with a root, left, and right node using floating-point values.
 
-ALGORITHM:
+---
+
+## ALGORITHM:
 
 1. **Start the program.**
 2. **Import** the `Node` class from the `binarytree` module.
@@ -12,23 +14,45 @@ ALGORITHM:
 5. **Convert the tree** to a list and print the list of nodes.
 6. **End the program.**
 
-PYTHON PROGRAM
+---
 
+## PYTHON PROGRAM
+
+```python
 from binarytree import Node
-l=[]
-for i in range(0,3):
-    a=float(input())
-    l.append(a)
-root=Node(l[0])
-root.left=Node(l[1])
-root.right=Node(l[2])
-print("List of nodes :",list(root))
 
-OUTPUT
+def _build_bst_from_sorted_values(sorted_values):
+    if len(sorted_values)==0:
+        return None
+    mid_index=len(sorted_values)//2
+    root=Node(sorted_values[mid_index])
+    root.left=_build_bst_from_sorted_values(sorted_values[:mid_index])
+    root.right=_build_bst_from_sorted_values(sorted_values[mid_index+1:])
+    return (root)
 
-![image](https://github.com/user-attachments/assets/a0ee44e1-a71a-4f98-9e85-9c5861e4c782)
+def left_subtree(l):
+    print("Left Subtree :")
+    for i in l[1].values:
+        print(i,"-->",end="")
+    return
 
+a=[]
+size=int(input())
+for i in range(0,size):
+    val=int(input())
+    a.append(val)
+x=sorted(a)
 
-RESULT
+l=_build_bst_from_sorted_values(x)
+print("Postorder :",l.postorder)
+left_subtree(l)
+print("\nIs this a Binary Search Tree? ",l.is_bst)
+```
 
-Thus the Python program to build a binary tree with a root, left, and right node using floating-point values has been implemented and executed successfully.
+## OUTPUT
+
+<img width="916" height="286" alt="image" src="https://github.com/user-attachments/assets/778869dd-6174-4d0c-9950-59af6eaebcf7" />
+
+## RESULT
+
+Thus, the python code is written and executed successfully.
