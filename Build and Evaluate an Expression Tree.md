@@ -1,9 +1,11 @@
-Ex. No: 15E - Build and Evaluate an Expression Tree
+# Ex. No: 15E - Build and Evaluate an Expression Tree
 
-AIM:
+## AIM:
 To write a Python program to build and evaluate the given Expression tree.
 
-ALGORITHM:
+---
+
+## ALGORITHM:
 
 1. **Start the program.**
 2. Create nodes for operators and operands.
@@ -15,49 +17,26 @@ ALGORITHM:
 5. Return the final result from the root node.
 6. **End the program.**
 
-PROGRAM:
-
-class Node:
-    def __init__(self, val, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-def isLeaf(node):
-    return node.left is None and node.right is None
- 
-def process(op, x, y):
-    if op == '+':
-        return x + y
-    if op == '-':
-        return x - y
-    if op == '*':
-        return x * y
-    if op == '/':
-        return x / y
- 
-def evaluate(root):
-    if root is None:
-        return 0
-    if isLeaf(root):
-        return float(root.val)
-    x=evaluate(root.left)
-    y=evaluate(root.right)
-    return (process(root.val,x,y))
-root=Node('+')
-root.left=Node('*')
-root.right=Node('3')
-root.left.left=Node('4')
-root.left.right=Node('8')
-
-print("The value of the expression tree is",evaluate(root))
- 
-OUTPUT:
-
-![image](https://github.com/user-attachments/assets/8a64b3e6-cb59-4cba-963c-d5519b029d43)
+---
 
 
-RESULT:
+## PROGRAM:
 
-Thus the Python program to build and evaluate the given Expression tree has been implemented and executed successfully.
+```python
+
+from binarytree import build
+x=['*','+','-',9,3,8,4]
+t=build(x)
+print(t.inorder)
+print(t.postorder)
+
+```
+
+## OUTPUT:
+
+<img width="848" height="117" alt="image" src="https://github.com/user-attachments/assets/99b8da23-79d5-4ecf-a84a-10e4caef6030" />
+
+## RESULT:
+
+Thus, the python code is written and executed successfully.
 
